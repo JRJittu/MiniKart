@@ -102,7 +102,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res)=>{
 
 const updateCurrentUser = asyncHandler(async (req, res)=>{
     const currentUser = await User.findById(req.user._id)
-
+    console.log("Called Update User : ", currentUser);
     if(currentUser){
         currentUser.username = req.body.username || currentUser.username;
         currentUser.email = req.body.email || currentUser.email;
