@@ -25,7 +25,7 @@ const app = express()
 const corsOptions = {
   origin: 'https://minikart-frontend.onrender.com',  // Allow requests from your frontend domain
   methods: 'GET, POST, PUT, DELETE',
-  // credentials: true,  // If you need to handle cookies or authentication
+  credentials: true,  // If you need to handle cookies or authentication
 }
 
 // Use CORS middleware
