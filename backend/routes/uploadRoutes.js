@@ -38,10 +38,11 @@ router.post('/', (req, res)=>{
         if (err){
             res.status(400).send({error: err.message})
         }
-        else if(req.file){
+        else if (req.file) {
+            const imageUrl = `https://raw.githubusercontent.com/JRJittu/MiniKart/refs/heads/main/backend/${req.file.filename}`;  // Construct the full URL
             res.status(200).send({
                 message: "Image Uploaded successfully",
-                image: `/${req.file.path}`
+                image: imageUrl  // Return the full URL
             })
         }
         else{
