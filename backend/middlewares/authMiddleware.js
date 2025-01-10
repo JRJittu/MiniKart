@@ -4,6 +4,7 @@ import asyncHandler from "./asyncHandler.js"
 
 /* Authenticate : to check current user */
 const authenticate = asyncHandler(async (req, res, next)=>{
+    console.log("Called to auth middleware");
     let token;
 
     // read jwt from jwt cookie of logined user
@@ -15,11 +16,13 @@ const authenticate = asyncHandler(async (req, res, next)=>{
             req.user = await User.findById(decodedJwt.userId).select("-password");  // means get all except password
             next()
         } catch (error) {
+            console.log("Not authorized, token failed")
             res.status(401)
             throw new Error("Not authorized, token failed")
         }
     }
     else{
+        console.log("Not authorized, no token");
         res.status(401)
         throw new Error("Not authorized, no token")
     }
